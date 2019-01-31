@@ -83,6 +83,7 @@
     let sPos = n.s/60*360; 
     let mPos = n.m/60*360;
     let hPos = n.h/12*360 + n.m/60*30;
+    //second hand, might be on the hour hand
     handElems[0].style.transform = `rotate(${sPos+90}deg)`;
     console.log(n.s);
     
