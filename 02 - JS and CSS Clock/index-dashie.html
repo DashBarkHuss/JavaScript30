@@ -123,6 +123,7 @@
     let sPos = n.s/60*360; 
     let mPos = n.m/60*360;
     let hPos = n.h/12*360 + n.m/60*30;
+    
     //set hands
     handElems[0].style.transform = `rotate(${hPos+90}deg)`;
     handElems[1].style.transform = `rotate(${mPos+90}deg)`;
