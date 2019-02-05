@@ -84,7 +84,6 @@
 
 
   function handPostition() {
-
     let n = getTime();
     //calculate degrees from time
     let sPos = n.s/60*360; 
@@ -92,9 +91,8 @@
     let hPos = n.h/12*360 + n.m/60*30;
 
     if (n.s ==0){
-    turnOffTransition();
+      turnOffTransition();
     }
-    
     //set hands
     console.log("position set");
     handElems[0].style.transform = `rotate(${hPos+90}deg)`;
