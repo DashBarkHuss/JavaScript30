@@ -12,20 +12,21 @@
   <script>
 
   let div = document.querySelector("div");
-  log();
-  addBorder();
-
+  
   function log(){
-    console.log("before addBorder() called: ", div);  
+    console.log("before addBorder() called: ", div.style.border);  
   }
 
   function addBorder(){
     console.log("addBorder() called");
-    console.log("before css property set:   ", div);   
+    console.log("before css property set:   ", div.style.border);   
     div.style.border = "2px solid red";
-    console.log("after:                     ", div);
+    console.log("after:                     ", div.style.border);
   }
 
-  </script>
+  log();
+  addBorder();
+
+</script>
 </body>
 </html>

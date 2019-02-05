@@ -9,9 +9,7 @@
     <div>one</div>
 
   <script>
-let num = 3;
-  log();
-  multiplyBy10();
+  let num = 3;
 
   function log(){
     console.log("before multiplyBy10() called: ", num);  
@@ -20,9 +18,12 @@ let num = 3;
   function multiplyBy10(){
     console.log("multiplyBy10() called");
     console.log("before number multiplied:     ", num);   
-    num *=10;
+    num *= 10;
     console.log("after:                        ", num);
   }
+
+  log();
+  multiplyBy10();
   </script>
 </body>
 </html>
