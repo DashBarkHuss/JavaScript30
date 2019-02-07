@@ -45,23 +45,42 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // let blds = document.querySelectorAll("#mw-pages li")
+    // let array = Array.from(blds);
+    // array.map(li => li.textContent).filter(streetName=> streetName.includes('de'));
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
+   let alphPeople = people.sort((p1,p2) => {
+      const [alast, afirst] = p1.split(', ');
+      const [blast, bfirst] = p2.split(',');
+
+      return alast < blast ? -1 : 1;
+     
+     });
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    let each = data.reduce((obj, item)=>{
+      if (!obj[item]){
+        obj[item]=0;
+      }
+      obj[item]++
+    console.log(item);
+    return obj;
+    },{});
 
-    let y1500 = inventors.filter(x=> x["year"]>=1500 && x["year"]<1600);
-    let flnames = inventors.map(x=>x["first"]+ " " +x["last"]);
+    let y1500 = inventors.filter(x=> x.year>=1500 && x.year<1600);
+    let flnames = inventors.map(x=>x.first + " " +x.last);
     let oldtoyoung = inventors.sort((a,b)=>a.year-b.year);
     let totalyears = inventors.reduce((a,b)=>a+(b.passed-b.year),0);
     let longestlife = inventors.sort((a,b)=>(a.passed-a.year)-(b.passed-a.year));
     
 
-    console.table(longestlife);
+    console.log(each);
   </script>
 </body>
 </html>
