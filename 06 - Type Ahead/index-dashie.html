@@ -31,7 +31,9 @@ function findMatches(wordToMatch, cities){
 
 function insertHTML(matches){
   console.log("Matches:",matches);
-  var tag = "";    
+  var tag = ""; 
+  if (matches=='') {document.querySelector(".suggestions").innerHTML = tag; return;};
+     
   for (i in matches) {
       tag += `<li>${matches[i].city}, ${matches[i].state}</li>`;
   }
@@ -39,6 +41,7 @@ function insertHTML(matches){
   document.querySelector(".suggestions").innerHTML = tag;
 }
 let input = document.querySelector(".search");
+
 input.addEventListener("keyup", ()=>{
   let inputString = input.value;
   let matches = findMatches(inputString, cities);
