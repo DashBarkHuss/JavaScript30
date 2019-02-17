@@ -7,6 +7,16 @@
 </head>
 <body>
 <script>
+let keyArray=["1", "2", "3", "4", "5", "6"];
+const secretCode = "dash";
+function keyFunc(e){
+  keyArray.push(e.key)
+  // debugger;
+  // keyArray.splice(-secretCode.length-1, keyArray.length-secretCode.length);
+  // console.log(keyArray);
+}
+
+  window.addEventListener('keyup', keyFunc);
 </script>
 </body>
 </html>
