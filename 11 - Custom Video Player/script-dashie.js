@@ -9,7 +9,7 @@ const toggle = player.querySelector('.toggle');
 const play = player.querySelector('[title="Toggle Play"]');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges= player.querySelectorAll('.player__slider');
-const ranges= player.querySelector('.full_screen');
+const fullToggle= player.querySelector('.full_screen');
 
 
 // build functions
@@ -18,9 +18,8 @@ function togglePlay(){
 };
 
 function updateButton(){
-    console.log(this.paused, " play/pause");
-    const icon = this.paused? '►' : '❚ ❚';
-    toggle.textContent = icon;
+    const icon = this.paused? '►' : '❚ ❚'; 
+    toggle.textContent = icon; 
 }
 
 function skip(){
@@ -46,7 +45,22 @@ function scrub(e){
     vidElem.currentTime = fraction * vidElem.duration;
 }
 
+let expanded = false;
+function fullScreen(e){
+    console.log("full");
+    if (!expanded) { 
+        this.innerHTML = "Collapse"; 
+        player.style.maxWidth = "none";
+        player.style.width = "100%";
+        expanded = true;
+    } else {
+        this.innerHTML = "Expand";  
+        player.style.maxWidth = "750px";
+        player.style.width = "none";
+        expanded = false;
+    } 
 
+}
 // hook up event listeners 
 
 vidElem.addEventListener('click', togglePlay);
@@ -60,4 +74,5 @@ progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', scrub);
 progress.addEventListener('mousedown', setFlag);
 progress.addEventListener('mouseup', setFlag);
+fullToggle.addEventListener('click', fullScreen);
 //progress.addEventListener('mouseout', setFlag);
