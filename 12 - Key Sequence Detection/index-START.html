@@ -7,13 +7,15 @@
 </head>
 <body>
 <script>
-let keyArray=["1", "2", "3", "4", "5", "6"];
+let keyArray=[];
 const secretCode = "dash";
 function keyFunc(e){
   keyArray.push(e.key)
-  // debugger;
-  // keyArray.splice(-secretCode.length-1, keyArray.length-secretCode.length);
-  // console.log(keyArray);
+  keyArray.splice(-secretCode.length-1, keyArray.length-secretCode.length);
+  if(keyArray.join('').includes(secretCode)){
+    console.log("yay!")
+    cornify_add();
+  }
 }
 
   window.addEventListener('keyup', keyFunc);
