@@ -43,7 +43,7 @@
   </div>
 
   <script>
-    function debounce(func, wait = 30, immediate = true) {
+    function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
         var context = this, args = arguments;
@@ -56,28 +56,39 @@
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
       };
-    };
-
-    const imgs = document.querySelectorAll(".slide-in");
-    
-    function checkSlide(e){
-        imgs.forEach(img=>{
-            const slideImgAt = window.scrollY + window.innerHeight - img.height/2 ;
-            const imageBottom = img.offsetTop + img.height;
-            const isHalfShown = slideImgAt > img.offsetTop;
-            const isNotScrolledPast = window.scrollY < imageBottom;
-            if (isHalfShown && isNotScrolledPast){
-                img.classList.add('active');
-            }else{
-                img.classList.remove('active');
-
-            }
-            console.log(slideImgAt);
-        });
     }
 
-    window.addEventListener('scroll', debounce(checkSlide));
-    
+    const images = document.querySelectorAll("img");
+
+    function scrollEvent(e){
+      //loop through images find where we are and which images that corresponds to
+      //when the button of the page is at the halfway point of the images console log the images
+      //when we pass an image move it in, when we pass it again wove it out
+      //get all the images, find which one is in view and add the class
+
+      images.forEach((image)=>{
+            const imageBottom = image.offsetTop + image.height;
+            console.log(image.height);
+            const slideInAt = window.scrollY + window.innerHeight - image.height/2; 
+            const isHalfShown = slideInAt > image.offsetTop; 
+            const isNotScrolledPast = window.scrollY < imageBottom;
+            console.log(`${isHalfShown} ${isNotScrolledPast}`);
+            if (isHalfShown && isNotScrolledPast){ 
+              console.log(`${image} is showing`)
+              image.classList.add("active");
+            } else {
+              console.log(`${image} is NOT showing`)
+              image.classList.remove("active");
+            }
+
+          });
+
+
+      
+      }
+
+    window.addEventListener('scroll', debounce(scrollEvent));
+
   </script>
 
   <style>
