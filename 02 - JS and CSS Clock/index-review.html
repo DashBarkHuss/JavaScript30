@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <form id="data">
+        <input type="text" name="item" placeholder="Item Name" required>
+        <input type="submit" value="+ Add Item">
+    </form>
+
+    <div id ="stored"></div>
+        
+    <script>
+        //populate array with local storage if there is any
+        let arrayOfData = JSON.parse(localStorage.getItem('data')) || []; 
+        //save elements 
+        let dataForm = document.querySelector("#data");
+        let dataDisplay = document.querySelector("#stored");
+
+        //get the input value on submit
+        function getData(e){
+            e.preventDefault();
+            console.log("submit")
+            let dataInput = (document.querySelector("[name='item']")).value;
+            arrayOfData.push({text: dataInput})
+
+            localStorage.setItem('data', JSON.stringify(arrayOfData));
+            populateDiv(arrayOfData, dataDisplay)
+            this.reset();
+        }
+
+        function populateDiv(data, div){
+            dataDisplay.innerHTML = arrayOfData.map((datum)=>{
+               return`
+               <li> ${datum.text}</li>
+               `;
+            }).join('');
+        }
+        //save value to local storage
+        //populate div with array 
+
+
+        dataForm.addEventListener('submit', getData);
+        populateDiv(arrayOfData, dataDisplay);
+
+
+    </script>
+</body>
+</html>
